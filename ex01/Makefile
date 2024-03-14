@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sebasnadu <johnavar@student.42berlin.de>   +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/14 12:14:12 by sebasnadu         #+#    #+#              #
-#    Updated: 2024/03/14 22:31:40 by sebasnadu        ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 ################################################################################
 ##                                   COLORS                                   ##
 ################################################################################
@@ -25,75 +13,75 @@ CYAN        := \033[0;96m
 WHITE       := \033[0;97m
 	
 ################################################################################
-##                                  brainzZ                                   ##
+##                                 MOARBRAINZ                                 ##
 ################################################################################
 
-NAME							:= brainzZ
-CXX								:= c++
-RM								:= rm -rf
+NAME							:= moarBrainz
+CXX								:=
+RM								:=
 	
 ################################################################################
 ##                                DIRECTORIES                                 ##
 ################################################################################
 
-OBJ_DIR						:= obj
-SRC_DIR						:= src
-INC_DIR						:= include
+OBJ_DIR						:=
+SRC_DIR						:=
+INC_DIR						:=
 
-vpath %.cpp $(SRC_DIR)
-vpath %.hpp $(INC_DIR)
-vpath %.o $(OBJ_DIR)
+vpath
+vpath
+vpath
 
-HEADER						:= Zombie.hpp
-SOURCE						:= main.cpp Zombie.cpp
-OBJECT						:= $(addprefix $(OBJ_DIR)/, $(SOURCE:.cpp=.o))
+HEADER						:=
+SOURCE						:=
+OBJECT						:=
 	
 ################################################################################
 ##                                   FLAGS                                    ##
 ################################################################################
 
-CXXFLAGS					:= -Wall -Wextra -Werror -std=c++98
-INCLUDE						:= -I$(INC_DIR)
+CXXFLAGS					:=
+INCLUDE						:=
 	
 ################################################################################
 ##                                PROGRESS_BAR                                ##
 ################################################################################
 
-NUM_SRC_FILES			:= $(words $(SOURCE))
-NUM_OBJ_FILES			:= $(words $(OBJECT))
-NUM_TO_COMPILE		= $(shell expr $(NUM_SRC_FILES) - $(NUM_OBJ_FILES))
+NUM_SRC_FILES			:=
+NUM_OBJ_FILES			:=
+NUM_TO_COMPILE		=
 
-ifeq ($(shell test $(NUM_TO_COMPILE) -le 0; echo $$?), 0)
-	NUM_TO_COMPILE	= $(NUM_SRC_FILES)
+ifeq()
+	NUM_TO_COMPILE	=
 endif
 
-COMPILED_FILES		= 0
-COMPILATION_PCT		= $(shell expr 100 \* $(COMPILED_FILES) / $(NUM_TO_COMPILE))
+COMPILED_FILES		=
+COMPILATION_PCT		=
 	
 ################################################################################
 ##                                COMPILATION                                 ##
 ################################################################################
 
-all:	$(NAME)
+all:
 
-$(NAME):	$(OBJECT)
+$(NAME):
 	@printf "\n$(MAGENTA)[$(NAME)] $(DEFAULT)Linking "
 	@printf "($(BLUE)$(NAME)$(DEFAULT))..."
-	@$(CXX) $(CXXFLAGS) $(INCLUDE) $^ -o $@
+	@
 	@printf "\r%100s\r$(MAGENTA)[$(NAME)] $(GREEN)Compilation success "
 	@printf "🎉!$(DEFAULT)\n"
 
-$(OBJ_DIR)/%.o:	%.cpp $(HEADER) | $(OBJ_DIR)
+$(OBJ_DIR)/%.o:
 	@$(eval COMPILED_FILES = $(shell expr $(COMPILED_FILES) + 1))
 	@printf "$(MAGENTA)\r%100s\r[$(NAME)] $(GREEN)[ %d/%d (%d%%) ]" \
 			"" $(COMPILED_FILES) $(NUM_TO_COMPILE) $(COMPILATION_PCT) 
 	@printf " $(DEFAULT)Compiling ($(BLUE)$<$(DEFAULT))..."
-	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
+	@
 
 $(OBJ_DIR):
 	@printf "$(MAGENTA)[$(NAME)] $(DEFAULT)Creating objects directory "
 	@printf "($(BLUE)$(OBJ_DIR)$(DEFAULT))..."
-	@mkdir -p $@
+	@	
 	@printf "\r%100s\r$(MAGENTA)[$(NAME)] $(DEFAULT)($(BLUE)$(OBJ_DIR)/$(DEFAULT)) "
 	@printf "Created successfully!\n"
 
