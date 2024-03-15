@@ -6,7 +6,7 @@
 #    By: sebasnadu <johnavar@student.42berlin.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 12:14:12 by sebasnadu         #+#    #+#              #
-#    Updated: 2024/03/14 22:31:40 by sebasnadu        ###   ########.fr        #
+#    Updated: 2024/03/15 11:12:52 by sebasnadu        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ vpath %.hpp $(INC_DIR)
 vpath %.o $(OBJ_DIR)
 
 HEADER						:= Zombie.hpp
-SOURCE						:= main.cpp Zombie.cpp
+SOURCE						:= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 OBJECT						:= $(addprefix $(OBJ_DIR)/, $(SOURCE:.cpp=.o))
 	
 ################################################################################
