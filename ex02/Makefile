@@ -70,7 +70,7 @@ all: $(NAME)
 $(NAME): $(OBJECT)
 	@printf "\n$(MAGENTA)[$(NAME)] $(DEFAULT)Linking "
 	@printf "($(BLUE)$(NAME)$(DEFAULT))..."
-	@$(CXX) $(CXXFLAGS) $(INCLUDE) $^ -o $@
+	@$(CXX) $(CXXFLAGS) $^ -o $@
 	@printf "\r%100s\r$(MAGENTA)[$(NAME)] $(GREEN)Compilation success "
 	@printf "🎉!$(DEFAULT)\n"
 

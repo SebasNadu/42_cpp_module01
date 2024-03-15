@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sebasnadu <johnavar@student.42berlin.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/15 16:35:21 by sebasnadu         #+#    #+#             */
-/*   Updated: 2024/03/15 16:35:22 by sebasnadu        ###   ########.fr       */
+/*   Created: 2024/03/15 18:02:36 by sebasnadu         #+#    #+#             */
+/*   Updated: 2024/03/15 18:02:37 by sebasnadu        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Header protection
 #pragma once
 
+#include "Weapon.hpp"
 #include <string>
 
-class Zombie {
+class HumanB {
 public:
-  Zombie(void);
-  Zombie(std::string name);
-  ~Zombie();
+  HumanB(std::string name) : _name(name), _weapon(nullptr){};
+  ~HumanB(void){};
 
-  void announce(void) const;
-  void setName(std::string const &name);
+  void attack(void) const;
+  void setWeapon(Weapon &weapon);
 
 private:
   std::string _name;
+  Weapon *_weapon;
 };
-
-Zombie *zombieHorde(int N, std::string name);

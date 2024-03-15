@@ -13,10 +13,10 @@ CYAN        := \033[0;96m
 WHITE       := \033[0;97m
 	
 ################################################################################
-##                                 MOARBRAINZ                                 ##
+##                                  VIOLENCE                                  ##
 ################################################################################
 
-NAME							:= moarBrainz
+NAME							:= violence
 CXX								:= c++
 RM								:= rm -rf
 	
@@ -32,8 +32,8 @@ vpath %.cpp $(SRC_DIR)
 vpath %.hpp $(INC_DIR)
 vpath %.o $(OBJ_DIR)
 
-HEADER						:= Zombie.hpp
-SOURCE						:= main.cpp Zombie.cpp zombieHorde.cpp
+HEADER						:= Weapon.hpp HumanA.hpp HumanB.hpp
+SOURCE						:= main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 OBJECT						:= $(addprefix $(OBJ_DIR)/, $(SOURCE:.cpp=.o))
 	
 ################################################################################
@@ -42,7 +42,7 @@ OBJECT						:= $(addprefix $(OBJ_DIR)/, $(SOURCE:.cpp=.o))
 
 CXXFLAGS					= -Wall -Wextra -Werror -std=c++98
 ifdef DEBUG
-	CXXFLAGS				+= -g3 -pedantic -fsanitize=address
+	CXXFLAGS				+= -g3 -fsanitize=address -pedantic
 endif
 INCLUDE						:= -I$(INC_DIR)
 	
@@ -79,7 +79,7 @@ $(OBJ_DIR)/%.o: %.cpp $(HEADER) | $(OBJ_DIR)
 	@printf "$(MAGENTA)\r%100s\r[$(NAME)] $(GREEN)[ %d/%d (%d%%) ]" \
 			"" $(COMPILED_FILES) $(NUM_TO_COMPILE) $(COMPILATION_PCT) 
 	@printf " $(DEFAULT)Compiling ($(BLUE)$<$(DEFAULT))..."
-	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CXX) $(CXXIFLAGS) $(INCLUDE) -c $< -o $@
 
 $(OBJ_DIR):
 	@printf "$(MAGENTA)[$(NAME)] $(DEFAULT)Creating objects directory "
