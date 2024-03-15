@@ -1,0 +1,22 @@
+#include "Zombie.hpp"
+#include <iostream>
+
+Zombie *zombieHorde(int N, std::string name) {
+  Zombie *horde(nullptr);
+  if (N <= 0) {
+    std::cout << "You need to create at least one Zombie for the horde"
+              << std::endl;
+    return nullptr;
+  }
+  try {
+    horde = new Zombie[N];
+  } catch (const std::bad_alloc &error) {
+    std::cout << "Allocation of the horde failed: " << error.what()
+              << std::endl;
+    return nullptr;
+  }
+  for (int i(0); i < N; i++) {
+    horde[i].setName(name);
+  }
+  return horde;
+}

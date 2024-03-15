@@ -17,8 +17,8 @@ WHITE       := \033[0;97m
 ################################################################################
 
 NAME							:= moarBrainz
-CXX								:=
-RM								:=
+CXX								:= c++
+RM								:= rm -rf
 	
 ################################################################################
 ##                                DIRECTORIES                                 ##
@@ -40,7 +40,10 @@ OBJECT						:= $(addprefix $(OBJ_DIR)/, $(SOURCE:.cpp=.o))
 ##                                   FLAGS                                    ##
 ################################################################################
 
-CXXFLAGS					:= -wall -Wextra -Werror -std=c++98
+CXXFLAGS					= -Wall -Wextra -Werror -std=c++98
+ifdef DEBUG
+	CXXFLAGS				+= -g3 -pedantic -fsanitize=address
+endif
 INCLUDE						:= -I$(INC_DIR)
 	
 ################################################################################
@@ -51,7 +54,7 @@ NUM_SRC_FILES			:= $(words $(SOURCE))
 NUM_OBJ_FILES			:= $(words $(OBJECT))
 NUM_TO_COMPILE		= $(shell expr $(NUM_SRC_FILES) - $(NUM_OBJ_FILES))
 
-ifeq($(shell test $(NUM_TO_COMPILE) -le 0, echo $$?), 0)
+ifeq ($(shell test $(NUM_TO_COMPILE) -le 0; echo $$?), 0)
 	NUM_TO_COMPILE	= $(NUM_SRC_FILES)
 endif
 
@@ -62,16 +65,16 @@ COMPILATION_PCT		= $(shell expr 100 \* $(COMPILED_FILES) / $(NUM_TO_COMPILE))
 ##                                COMPILATION                                 ##
 ################################################################################
 
-all:
+all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJECT)
 	@printf "\n$(MAGENTA)[$(NAME)] $(DEFAULT)Linking "
 	@printf "($(BLUE)$(NAME)$(DEFAULT))..."
-	@$(CXX) $(CXXFLAGS) $^ -o $@
+	@$(CXX) $(CXXFLAGS) $(INCLUDE) $^ -o $@
 	@printf "\r%100s\r$(MAGENTA)[$(NAME)] $(GREEN)Compilation success "
 	@printf "🎉!$(DEFAULT)\n"
 
-$(OBJ_DIR)/%.o:
+$(OBJ_DIR)/%.o: %.cpp $(HEADER) | $(OBJ_DIR)
 	@$(eval COMPILED_FILES = $(shell expr $(COMPILED_FILES) + 1))
 	@printf "$(MAGENTA)\r%100s\r[$(NAME)] $(GREEN)[ %d/%d (%d%%) ]" \
 			"" $(COMPILED_FILES) $(NUM_TO_COMPILE) $(COMPILATION_PCT) 
@@ -81,7 +84,7 @@ $(OBJ_DIR)/%.o:
 $(OBJ_DIR):
 	@printf "$(MAGENTA)[$(NAME)] $(DEFAULT)Creating objects directory "
 	@printf "($(BLUE)$(OBJ_DIR)$(DEFAULT))..."
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $@
 	@printf "\r%100s\r$(MAGENTA)[$(NAME)] $(DEFAULT)($(BLUE)$(OBJ_DIR)/$(DEFAULT)) "
 	@printf "Created successfully!\n"
 

@@ -6,14 +6,13 @@
 /*   By: sebasnadu <johnavar@student.42berlin.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:11:56 by sebasnadu         #+#    #+#             */
-/*   Updated: 2024/03/15 11:17:58 by sebasnadu        ###   ########.fr       */
+/*   Updated: 2024/03/15 11:40:28 by sebasnadu        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Header protection
 #pragma once
 
-#include <iostream>
 #include <string>
 
 class Zombie {
