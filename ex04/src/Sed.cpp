@@ -6,11 +6,12 @@
 /*   By: sebasnadu <johnavar@student.42berlin.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:18:56 by sebasnadu         #+#    #+#             */
-/*   Updated: 2024/03/16 16:18:59 by sebasnadu        ###   ########.fr       */
+/*   Updated: 2024/04/03 10:56:56 by johnavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Sed.hpp"
+#include <cstdlib>
 #include <iostream>
 
 Sed::Sed(std::string const &fileName) {
@@ -18,7 +19,7 @@ Sed::Sed(std::string const &fileName) {
   if (!this->_inputFile.is_open()) {
     std::cerr << "Error: " << fileName << ": No such file or directory"
               << std::endl;
-    exit(1);
+    std::exit(1);
   }
 
   this->_fileSize = this->_inputFile.tellg();
@@ -30,7 +31,7 @@ Sed::Sed(std::string const &fileName) {
               << ".replace: Problem creating the file, please try again."
               << std::endl;
     this->_inputFile.close();
-    exit(1);
+    std::exit(1);
   }
   this->_readFile();
 }
@@ -48,7 +49,7 @@ void Sed::_readFile(void) {
               << std::endl;
     this->_inputFile.close();
     this->_outputFile.close();
-    exit(1);
+    std::exit(1);
   }
 }
 
@@ -60,7 +61,7 @@ void Sed::_writeFile(void) {
         << std::endl;
     this->_inputFile.close();
     this->_outputFile.close();
-    exit(1);
+    std::exit(1);
   }
 }
 
@@ -71,7 +72,7 @@ void Sed::setFile(std::string const &fileName) {
   if (!this->_inputFile.is_open()) {
     std::cerr << "Error: " << fileName << ": No such file or directory"
               << std::endl;
-    exit(1);
+    std::exit(1);
   }
   this->_fileSize = this->_inputFile.tellg();
   std::cout << "File size: " << this->_fileSize << std::endl;
@@ -83,7 +84,7 @@ void Sed::setFile(std::string const &fileName) {
               << ".replace: Problem creating the file, please try again."
               << std::endl;
     this->_inputFile.close();
-    exit(1);
+    std::exit(1);
   }
   this->_readFile();
 }

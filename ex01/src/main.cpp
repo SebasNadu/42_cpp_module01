@@ -6,7 +6,7 @@
 /*   By: sebasnadu <johnavar@student.42berlin.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 16:35:06 by sebasnadu         #+#    #+#             */
-/*   Updated: 2024/03/15 16:35:07 by sebasnadu        ###   ########.fr       */
+/*   Updated: 2024/04/03 10:42:21 by johnavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void) {
   std::cout << "\nNumber: " << N << std::endl;
 
   Zombie *horde = zombieHorde(N, "ZomiE1");
-  if (horde == nullptr) {
+  if (horde == NULL) {
     std::cout << "The horde could not be created" << std::endl;
   } else {
     for (int i(0); i < N; i++)
@@ -30,7 +30,7 @@ int main(void) {
   N = 2;
   std::cout << "\nNumber: " << N << std::endl;
   horde = zombieHorde(N, "ZomiE2");
-  if (horde == nullptr) {
+  if (horde == NULL) {
     std::cout << "The horde could not be created" << std::endl;
   } else {
     for (int i(0); i < N; i++)
@@ -42,7 +42,7 @@ int main(void) {
   N = 0;
   std::cout << "\nNumber: " << N << std::endl;
   horde = zombieHorde(N, "ZomiE3");
-  if (horde == nullptr) {
+  if (horde == NULL) {
     std::cout << "The horde could not be created" << std::endl;
   } else {
     for (int i(0); i < N; i++)
@@ -54,7 +54,7 @@ int main(void) {
   N = -1;
   std::cout << "\nNumber: " << N << std::endl;
   horde = zombieHorde(N, "ZomiE3");
-  if (horde == nullptr) {
+  if (horde == NULL) {
     std::cout << "The horde could not be created" << std::endl;
   } else {
     for (int i(0); i < N; i++)
