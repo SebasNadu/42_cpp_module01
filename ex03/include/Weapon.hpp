@@ -6,7 +6,7 @@
 /*   By: sebasnadu <johnavar@student.42berlin.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 18:02:40 by sebasnadu         #+#    #+#             */
-/*   Updated: 2024/03/15 18:02:42 by sebasnadu        ###   ########.fr       */
+/*   Updated: 2024/04/04 21:47:58 by sebasnadu        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 class Weapon {
 public:
-  Weapon(std::string type) : _type(type){};
-  ~Weapon(void){};
+  Weapon(std::string type);
+  ~Weapon(void);
 
   std::string const &getType(void) const;
   void setType(std::string type);
